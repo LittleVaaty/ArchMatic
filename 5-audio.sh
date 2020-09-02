@@ -11,14 +11,27 @@ echo
 echo "INSTALLING AUDIO COMPONENTS"
 echo
 
-PKGS=(
+read -p "Do you want to install Jack? [y/N]" -n 1 -r
+echo    # (optional) move to a new line
+if [[ $REPLY =~ ^[Yy]$ ]]
+then
+	PKGS=(
+            'alsa-utils'        # Advanced Linux Sound Architecture (ALSA) Components https://alsa.opensrc.org/
+            'alsa-plugins'      # ALSA plugins
+	    'jack2'		# Jack2 server
+	)
+else
+	PKGS=(
             'alsa-utils'        # Advanced Linux Sound Architecture (ALSA) Components https://alsa.opensrc.org/
             'alsa-plugins'      # ALSA plugins
             'pulseaudio'        # Pulse Audio sound components
             'pulseaudio-alsa'   # ALSA configuration for pulse audio
             'pavucontrol'       # Pulse Audio volume control
             'volumeicon'        # System tray volume control
-)
+	)
+fi
+
+
 
 for PKG in "${PKGS[@]}"; do
     echo "INSTALLING ${PKG}"
