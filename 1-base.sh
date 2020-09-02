@@ -41,14 +41,6 @@ PKGS=(
         'networkmanager-openvpn'    # Open VPN plugin for NM
         'network-manager-applet'    # System tray icon/utility for network connectivity
         'libsecret'                 # Library for storing passwords
-    
-    # --- Audio
-        'alsa-utils'        # Advanced Linux Sound Architecture (ALSA) Components https://alsa.opensrc.org/
-        'alsa-plugins'      # ALSA plugins
-        'pulseaudio'        # Pulse Audio sound components
-        'pulseaudio-alsa'   # ALSA configuration for pulse audio
-        'pavucontrol'       # Pulse Audio volume control
-        'pnmixer'           # System tray volume control
 
     # --- Bluetooth
         'bluez'                 # Daemons for the bluetooth protocol stack
