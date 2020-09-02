@@ -108,6 +108,10 @@ PKGS=(
     'hunspell-en'           # English spellcheck library
     'xpdf'                  # PDF viewer
 
+    # Music ---------------------------------------------------------------
+
+    'quodlibet'		    # Audio player
+    'musescore'		    # Music composition and notation software
 )
 
 for PKG in "${PKGS[@]}"; do
