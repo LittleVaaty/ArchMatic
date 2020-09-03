@@ -112,6 +112,10 @@ PKGS=(
 
     'quodlibet'		    # Audio player
     'musescore'		    # Music composition and notation software
+
+    # COMMUNICATIONS ------------------------------------------------------
+
+    'firefox'		    # Web browser
 )
 
 for PKG in "${PKGS[@]}"; do

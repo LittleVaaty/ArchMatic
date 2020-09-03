@@ -30,7 +30,7 @@ PKGS=(
 
     # COMMUNICATIONS ------------------------------------------------------
 
-    'brave-nightly-bin'         # Brave
+    #'brave-nightly-bin'         # Brave
     
 
     # THEMES --------------------------------------------------------------
