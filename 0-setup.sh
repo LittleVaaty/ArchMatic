@@ -29,6 +29,10 @@ fi
 echo "--------------------------------------"
 echo "-- Bootloader Systemd Installation  --"
 echo "--------------------------------------"
+lsblk
+echo "Please enter disk to configure bootloader: (example /dev/sda)"
+read DISK
+
 bootctl --path=/boot install
 rm /boot/loader/loader.conf
 cat <<EOF > /boot/loader/loader.conf
@@ -80,7 +84,7 @@ sed -i 's/^#en_GB.UTF-8 UTF-8/en_GB.UTF-8 UTF-8/' /etc/locale.gen
 locale-gen
 timedatectl --no-ask-password set-timezone Europe/Brussels
 timedatectl --no-ask-password set-ntp 1
-localectl --no-ask-password set-locale LANG="en_GB.UTF-8" LC_COLLATE="" LC_TIME="en_GB.UTF-8"
+localectl --no-ask-password set-locale LANG="en_GB.UTF-8" LC_TIME="en_GB.UTF-8"
 
 # Set keymaps
 localectl --no-ask-password set-keymap be-latin1

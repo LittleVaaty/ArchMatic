@@ -8,18 +8,22 @@
 #-------------------------------------------------------------------------
 
 echo "-------------------------------------------------"
+echo " Update Pacman And install required tool         "
+echo "-------------------------------------------------"
+
+pacman -Syy
+pacman -S --noconfirm reflector gptfdisk btrfs-progs
+
+
+echo "-------------------------------------------------"
 echo "Setting up mirrors for optimal download - FR/BE  "
 echo "-------------------------------------------------"
 timedatectl set-ntp true
-pacman -Syy --noconfirm pacman-contrib
 mv /etc/pacman.d/mirrorlist /etc/pacman.d/mirrorlist.backup
-curl -s "https://www.archlinux.org/mirrorlist/?country=FR&country=BE&protocol=https&use_mirror_status=on" | sed -e 's/^#Server/Server/' -e '/^#/d' | rankmirrors -n 5 - > /etc/pacman.d/mirrorlist
+reflector -c "BE" -f 12 -l 10 -n 12 --save /etc/pacman.d/mirrorlist
 
 echo "Set Keymap"
 loadkeys be-latin1
-
-echo -e "\nInstalling prereqs...\n$HR"
-pacman -S --noconfirm gptfdisk btrfs-progs
 
 echo "-------------------------------------------------"
 echo "-------select your disk to format----------------"
@@ -63,7 +67,7 @@ mount -t vfat "${DISK}1" /mnt/boot/
 echo "--------------------------------------"
 echo "-- Arch Install on Main Drive       --"
 echo "--------------------------------------"
-pacstrap /mnt base base-devel linux linux-firmware vim nano sudo --noconfirm --needed
+pacstrap /mnt base base-devel linux linux-firmware vim git sudo --noconfirm --needed
 genfstab -U /mnt >> /mnt/etc/fstab
 
 
@@ -95,7 +99,7 @@ passwd root
 exit
 EOF
 
-arch-chroot /mnt /root/part2.sh
+arch-chroot /mnt
 
 umount -R /mnt
 
