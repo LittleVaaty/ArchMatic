@@ -26,13 +26,45 @@ if ! source install.conf; then
   printf "password="$password"\n" >> "install.conf"
 fi
 
+echo "--------------------------------------"
+echo "-- Bootloader Systemd Installation  --"
+echo "--------------------------------------"
+bootctl --path=/boot install
+rm /boot/loader/loader.conf
+cat <<EOF > /boot/loader/loader.conf
+default arch
+timeout 3
+editor 0
+EOF
+
+cat <<EOF > /boot/loader/entries/arch.conf
+title Arch Linux
+linux /vmlinuz-linux
+initrd  /initramfs-linux.img
+options root=${DISK}2 rw
+EOF
+
+bootctl update
+mkinitcpio -p linux
+
+echo "--------------------------------------"
+echo "--          Network Setup           --"
+echo "--------------------------------------"
+pacman -S network-manager dhclient --noconfirm --needed
+systemctl enable --now NetworkManager
+
+echo "--------------------------------------"
+echo "--      Set Password for Root       --"
+echo "--------------------------------------"
+echo "Enter password for root user: "
+passwd root
+
 echo "-------------------------------------------------"
 echo "Setting up mirrors for optimal download - FR/BE  "
 echo "-------------------------------------------------"
-pacman -S --noconfirm pacman-contrib curl
+pacman -Syy --noconfirm reflector
 mv /etc/pacman.d/mirrorlist /etc/pacman.d/mirrorlist.backup
-curl -s "https://www.archlinux.org/mirrorlist/?country=FR&country=BE&protocol=https&use_mirror_status=on" | sed -e 's/^#Server/Server/' -e '/^#/d' | rankmirrors -n 5 - > /etc/pacman.d/mirrorlist
-
+reflector -c "BE" -f 12 -l 10 -n 12 --save /etc/pacman.d/mirrorlist
 nc=$(grep -c ^processor /proc/cpuinfo)
 echo "You have " $nc" cores."
 echo "-------------------------------------------------"
@@ -42,7 +74,7 @@ echo "Changing the compression settings for "$nc" cores."
 sudo sed -i 's/COMPRESSXZ=(xz -c -z -)/COMPRESSXZ=(xz -c -T $nc -z -)/g' /etc/makepkg.conf
 
 echo "-------------------------------------------------"
-echo "       Setup Language to US and set locale       "
+echo "       Setup Language to EN and set locale       "
 echo "-------------------------------------------------"
 sed -i 's/^#en_GB.UTF-8 UTF-8/en_GB.UTF-8 UTF-8/' /etc/locale.gen
 locale-gen
