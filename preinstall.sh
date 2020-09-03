@@ -77,7 +77,7 @@ cat <<EOF1 > /boot/loader/entries/arch.conf
 title Arch Linux  
 linux /vmlinuz-linux  
 initrd  /initramfs-linux.img  
-options root=${DISK}1 rw
+options root=${DISK}2 rw
 EOF1
 
 echo "--------------------------------------"
