@@ -61,3 +61,9 @@ At the terminal, run:
 ```bash
 xinit
 ```
+
+## Todo
+* Add user
+* Add joplin
+* Add Ho-my-zsh
+* add Material-awesome repo
