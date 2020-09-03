@@ -65,7 +65,9 @@ echo "-- Arch Install on Main Drive       --"
 echo "--------------------------------------"
 pacstrap /mnt base base-devel linux linux-firmware vim nano sudo --noconfirm --needed
 genfstab -U /mnt >> /mnt/etc/fstab
-arch-chroot /mnt
+
+
+cat <<EOF > /mnt/root/part2.sh
 
 echo "--------------------------------------"
 echo "-- Bootloader Systemd Installation  --"
@@ -91,6 +93,10 @@ echo "Enter password for root user: "
 passwd root
 
 exit
+EOF
+
+arch-chroot /mnt /root/part2.sh
+
 umount -R /mnt
 
 echo "--------------------------------------"
