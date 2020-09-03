@@ -67,18 +67,18 @@ pacstrap /mnt base base-devel linux linux-firmware vim nano sudo --noconfirm --n
 genfstab -U /mnt >> /mnt/etc/fstab
 
 
-cat <<EOF > /mnt/root/part2.sh
+cat <<'EOF' > /mnt/root/part2.sh
 
 echo "--------------------------------------"
 echo "-- Bootloader Systemd Installation  --"
 echo "--------------------------------------"
 bootctl install
-cat <<EOF > /boot/loader/entries/arch.conf
+cat <<EOF1 > /boot/loader/entries/arch.conf
 title Arch Linux  
 linux /vmlinuz-linux  
 initrd  /initramfs-linux.img  
 options root=${DISK}1 rw
-EOF
+EOF1
 
 echo "--------------------------------------"
 echo "--          Network Setup           --"
