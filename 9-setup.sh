@@ -131,6 +131,16 @@ sudo systemctl start ntpd.service
 # ------------------------------------------------------------------------
 
 echo
+echo "Configuring rofi"
+
+mkdir -p ~/.config/rofi
+rofi -dump-config > ~/.config/rofi/config.rasi
+mkdir -p ~/.local/share/rofi/themes/
+
+
+# ------------------------------------------------------------------------
+
+echo
 echo "NETWORK SETUP"
 echo
 echo "Find your IP Link name:"
