@@ -17,7 +17,7 @@ PKGS=(
             'pulseaudio'        # Pulse Audio sound components
             'pulseaudio-alsa'   # ALSA configuration for pulse audio
             'pavucontrol'       # Pulse Audio volume control
-            'volumeicon'        # System tray volume control
+            'pa-applet'         # System tray volume control
 )
 
 for PKG in "${PKGS[@]}"; do
