@@ -17,6 +17,7 @@ PKGS=(
         'i3status-rust'        # i3 status bar
         'nitrogen'             # Background browser
         'rofi'                  # App launcher 
+        'autorandr'            # Manage multiple screen setup with randr
 )
 
 for PKG in "${PKGS[@]}"; do
