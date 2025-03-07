@@ -8,24 +8,30 @@
 #-------------------------------------------------------------------------
 
 echo
-echo "INSTALLING AUDIO COMPONENTS"
+echo "INSTALLING XORG"
 echo
 
 PKGS=(
-  'alsa-utils'
-  'alsa-plugins'
-  'pipewire'
-  'pipewire-alsa'
-  'pipewire-pulse'
-  'pipewire-audio'
-  'pavucontrol'
+  'linux'
+  'linux-headers'
+  'linux-lts'
+  'linux-lts-headers'
+  'linux-firmware'
+  'git'
+  'base-devel'
+  'mesa'
+  'libva-mesa-driver'
+  'lvm2'
+  'plymouth'
+  'sudo'
 )
 
 for PKG in "${PKGS[@]}"; do
-  echo "INSTALLING ${PKG}"
+  echo "INSTALLING: ${PKG}"
   sudo pacman -S "$PKG" --noconfirm --needed
 done
 
 echo
 echo "Done!"
 echo
+

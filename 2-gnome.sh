@@ -8,21 +8,16 @@
 #-------------------------------------------------------------------------
 
 echo
-echo "INSTALLING AUDIO COMPONENTS"
+echo "INSTALLING I3"
 echo
 
 PKGS=(
-  'alsa-utils'
-  'alsa-plugins'
-  'pipewire'
-  'pipewire-alsa'
-  'pipewire-pulse'
-  'pipewire-audio'
-  'pavucontrol'
+  'gnome'        # I3 Window Manager
+  'gnome-tweaks' # i3 lock screen
 )
 
 for PKG in "${PKGS[@]}"; do
-  echo "INSTALLING ${PKG}"
+  echo "INSTALLING: ${PKG}"
   sudo pacman -S "$PKG" --noconfirm --needed
 done
 
