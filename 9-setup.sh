@@ -12,17 +12,14 @@ echo "FINAL SETUP AND CONFIGURATION"
 
 # ------------------------------------------------------------------------
 
-# ------------------------------------------------------------------------
-
-# ------------------------------------------------------------------------
-
 echo
-echo "Configuring LTS Kernel as a secondary boot option"
+echo "Install gnome extension"
 
-sudo cp /boot/loader/entries/arch.conf /boot/loader/entries/arch-lts.conf
-sudo sed -i 's|Arch Linux|Arch Linux LTS Kernel|g' /boot/loader/entries/arch-lts.conf
-sudo sed -i 's|vmlinuz-linux|vmlinuz-linux-lts|g' /boot/loader/entries/arch-lts.conf
-sudo sed -i 's|initramfs-linux.img|initramfs-linux-lts.img|g' /boot/loader/entries/arch-lts.conf
+gext install caffeine@patapon
+
+# ------------------------------------------------------------------------
+
+# ------------------------------------------------------------------------
 
 # ------------------------------------------------------------------------
 
