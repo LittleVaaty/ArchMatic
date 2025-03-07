@@ -8,7 +8,7 @@
 #-------------------------------------------------------------------------
 
 echo
-echo "INSTALLING XORG"
+echo "INSTALLING BASE"
 echo
 
 PKGS=(

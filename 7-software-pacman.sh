@@ -60,6 +60,8 @@ PKGS=(
   'git'
   'github-cli' # Cli client for github
   'neovim'     # Text editor
+  'arduino-ide'
+  'arduino-avr-core'
 
   # WEB TOOLS -----------------------------------------------------------
 

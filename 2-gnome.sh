@@ -8,12 +8,12 @@
 #-------------------------------------------------------------------------
 
 echo
-echo "INSTALLING I3"
+echo "INSTALLING GNOME"
 echo
 
 PKGS=(
-  'gnome'        # I3 Window Manager
-  'gnome-tweaks' # i3 lock screen
+  'gnome'
+  'gnome-tweaks'
 )
 
 for PKG in "${PKGS[@]}"; do
