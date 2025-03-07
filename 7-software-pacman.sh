@@ -57,7 +57,8 @@ PKGS=(
   'nodejs' # Javascript runtime environment
   'npm'    # Node package manager
   'python' # Scripting language
-  'yarn'   # Dependency management (Hyper needs this)
+  'python-pipx'
+  'yarn' # Dependency management (Hyper needs this)
   'git'
   'github-cli' # Cli client for github
   'neovim'     # Text editor

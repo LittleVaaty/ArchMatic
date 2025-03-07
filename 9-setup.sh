@@ -15,6 +15,8 @@ echo "FINAL SETUP AND CONFIGURATION"
 echo
 echo "Install gnome extension"
 
+pipx install gnome-extensions-cli --system-site-packages
+
 gext install caffeine@patapon
 
 # ------------------------------------------------------------------------
